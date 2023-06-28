@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<html>
+<head>
+  <title>Футбольные праздники</title>
+  <style>
+    #search-btn {
+  margin-top: 85px;
+  margin-left: 240px;
+  position: absolute;
+  top: 485px;
+   /* Сдвиг вниз на 10 пикселей */
+  /* Или используйте padding-top вместо margin-top */
+}
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-image: url('Ajax.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 2px;
+      font-size: 40px;
+      animation: shimmer 2s linear infinite;
+      
+}
+.form-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      
+    }
+
+    
+.form-container {
+  max-width: 300px;
+  
+  
+  
+  
+  
+}
+
+.form-group {
+  position: relative;
+  top: -280px;
+  left: 30px;
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="date"] {
+  width: 100%;
+  padding: 5px;
+}
+
+button {
+  display: block;
+      margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+#holiday-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #333333;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="date"] {
+  width: 100%;
+  padding: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #333333;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+#holiday-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+.photo-container {
+      margin-top: 700px;
+      text-align: center;
+    }
+
+    .photo {
+      width: 300px;
+      height: auto;
+    }
+    @keyframes shimmer {
+      0% { color: red; }
+      25% { color: blue; }
+      50% { color: green; }
+      75% { color: purple; }
+      100% { color: orange; }
+    }
+</style>
+</head>
+<body>
+  <h1>Значимые события в футбольном мире</h1>
+  <div class="photo-container">
+  <div id="container"></div>
+  <div class="form-container">
+    <!-- <div class="form-group">
+      <label for="date">Выберите дату :</label>
+      <input type="date" id="date" />
+      <div class="form-group">
+        <label for="country">Введите страну:</label>
+        <input type="text" id="country" />
+      </div>
+    </div>
+    <button id="search-btn" >Поиск</button>
+     -->
+  </div>
+  <ul id="holiday-list"></ul>
+  <div class="form-container">
+    <button id="search-btn">Поиск</button>
+    <div class="form-group">
+      <label for="country">Выберите страну:</label>
+      <select id="country">
+        <option value="Англия">Англия</option>
+        <option value="Испания">Испания</option>
+        <option value="Италия">Италия</option>
+        <option value="Англия">Германия</option>
+        <option value="Англия">Франция</option>
+        <!-- Добавьте другие варианты стран здесь -->
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="year">Выберите год:</label>
+      <select id="year">
+        <option value="2021">2019</option>
+        <option value="2021">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <!-- Добавьте другие варианты годов здесь -->
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="month">Выберите месяц:</label>
+      <select id="month">
+        <option value="01">Январь</option>
+        <option value="02">Февраль</option>
+        <option value="03">Март</option>
+        <option value="03">Апрель</option>
+        <option value="03">Май</option>
+        <!-- Добавьте другие варианты месяцев здесь -->
+      </select>
+    </div>
+   
+  </div>
+
+  <ul id="holiday-list"></ul>
+  <script>
+    var searchBtn = document.getElementById("search-btn");
+    searchBtn.addEventListener("click", function() {
+      var selectedCountry = document.getElementById("country").value;
+      var selectedYear = document.getElementById("year").value;
+      var selectedMonth = document.getElementById("month").value;
+      var googleLink = createGoogleLink(selectedCountry, selectedYear, selectedMonth);
+      window.location.href = googleLink;
+    })
+
+
+
+
+    var searchBtn = document.getElementById("search-btn");
+    searchBtn.addEventListener("click", function() {
+      var selectedDate = document.getElementById("date").value;
+      var googleLink = createGoogleLink(selectedDate);
+      window.location.href = googleLink;
+      
+    });
+
+setInterval(createConfetti, 100);
+    function createGoogleLink(date) {
+      var baseUrl = "https://www.google.com/search?q=";
+      var query = "футбольные праздники " + date;
+
+      return baseUrl + encodeURIComponent(query);
+    }
+    
+    function createGoogleLink(date, country,) {
+      var baseUrl = "https://www.google.com/search?q=";
+      var query = "футбольные праздники " + date + " " + country;
+      return baseUrl + encodeURIComponent(query);
+    }
+    
+  </script>
+</body>
